@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text Toolkit BD</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div>
+      <h1 data-i18n="appTitle">Text Toolkit BD</h1>
+      <p class="tag" data-i18n="appTag">Offline bilingual text utilities</p>
+    </div>
+    <button id="langToggle" type="button" class="langbtn">&#x09AC;&#x09BE;&#x0982;&#x09B2;&#x09BE;</button>
+  </div>
+</header>
+
+<nav class="tabs wrap" role="tablist" aria-label="tools">
+  <button type="button" role="tab" data-tab="case" data-i18n="tabCase" aria-selected="true">Case</button>
+  <button type="button" role="tab" data-tab="b64" data-i18n="tabB64" aria-selected="false">Base64</button>
+  <button type="button" role="tab" data-tab="url" data-i18n="tabUrl" aria-selected="false">URL</button>
+  <button type="button" role="tab" data-tab="morse" data-i18n="tabMorse" aria-selected="false">Morse</button>
+  <button type="button" role="tab" data-tab="stats" data-i18n="tabStats" aria-selected="false">Stats</button>
+  <button type="button" role="tab" data-tab="find" data-i18n="tabFind" aria-selected="false">Find &amp; Replace</button>
+</nav>
+
+<main class="wrap">
+
+  <section id="panel-case" class="panel" role="tabpanel">
+    <label for="in-case" data-i18n="inputLabel">Input</label>
+    <textarea id="in-case" rows="5" spellcheck="false"></textarea>
+    <fieldset class="modes">
+      <legend data-i18n="caseModeLabel">Mode</legend>
+      <label><input type="radio" name="caseMode" value="upper" checked> <span data-i18n="caseUpper">UPPER CASE</span></label>
+      <label><input type="radio" name="caseMode" value="lower"> <span data-i18n="caseLower">lower case</span></label>
+      <label><input type="radio" name="caseMode" value="title"> <span data-i18n="caseTitle">Title Case</span></label>
+      <label><input type="radio" name="caseMode" value="sentence"> <span data-i18n="caseSentence">Sentence case</span></label>
+      <label><input type="radio" name="caseMode" value="inverse"> <span data-i18n="caseInverse">iNVERSE cASE</span></label>
+    </fieldset>
+    <label for="out-case" data-i18n="outputLabel">Output</label>
+    <textarea id="out-case" rows="5" readonly spellcheck="false"></textarea>
+    <div class="btnrow">
+      <button type="button" id="copy-case" data-i18n="copyBtn" disabled>Copy</button>
+      <button type="button" id="clear-case" data-i18n="clearBtn" class="ghost">Clear</button>
+    </div>
+    <p class="hint" id="hint-case" data-i18n="emptyHint"></p>
+    <p class="note" id="note-case" hidden></p>
+    <p class="err" id="err-case" hidden></p>
+  </section>
+
+  <section id="panel-b64" class="panel" role="tabpanel" hidden>
+    <label for="in-b64" data-i18n="inputLabel">Input</label>
+    <textarea id="in-b64" rows="5" spellcheck="false"></textarea>
+    <div class="btnrow">
+      <button type="button" id="b64EncBtn" data-i18n="b64EncBtn">Encode</button>
+      <button type="button" id="b64DecBtn" data-i18n="b64DecBtn">Decode</button>
+    </div>
+    <label for="out-b64" data-i18n="outputLabel">Output</label>
+    <textarea id="out-b64" rows="5" readonly spellcheck="false"></textarea>
+    <div class="btnrow">
+      <button type="button" id="copy-b64" data-i18n="copyBtn" disabled>Copy</button>
+      <button type="button" id="clear-b64" data-i18n="clearBtn" class="ghost">Clear</button>
+    </div>
+    <p class="hint" id="hint-b64" data-i18n="emptyHint"></p>
+    <p class="micro" data-i18n="b64Hint"></p>
+    <p class="note" id="note-b64" hidden></p>
+    <p class="err" id="err-b64" hidden></p>
+  </section>
+
+  <section id="panel-url" class="panel" role="tabpanel" hidden>
+    <label for="in-url" data-i18n="inputLabel">Input</label>
+    <textarea id="in-url" rows="5" spellcheck="false"></textarea>
+    <div class="btnrow">
+      <button type="button" id="urlEncBtn" data-i18n="urlEncBtn">Encode</button>
+      <button type="button" id="urlDecBtn" data-i18n="urlDecBtn">Decode</button>
+    </div>
+    <label for="out-url" data-i18n="outputLabel">Output</label>
+    <textarea id="out-url" rows="5" readonly spellcheck="false"></textarea>
+    <div class="btnrow">
+      <button type="button" id="copy-url" data-i18n="copyBtn" disabled>Copy</button>
+      <button type="button" id="clear-url" data-i18n="clearBtn" class="ghost">Clear</button>
+    </div>
+    <p class="hint" id="hint-url" data-i18n="emptyHint"></p>
+    <p class="micro" data-i18n="urlHint"></p>
+    <p class="note" id="note-url" hidden></p>
+    <p class="err" id="err-url" hidden></p>
+  </section>
+
+  <section id="panel-morse" class="panel" role="tabpanel" hidden>
+    <label for="in-morse" data-i18n="inputLabel">Input</label>
+    <textarea id="in-morse" rows="5" spellcheck="false"></textarea>
+    <div class="btnrow">
+      <button type="button" id="morseEncBtn" data-i18n="morseEncBtn">Encode</button>
+      <button type="button" id="morseDecBtn" data-i18n="morseDecBtn">Decode</button>
+    </div>
+    <label for="out-morse" data-i18n="outputLabel">Output</label>
+    <textarea id="out-morse" rows="5" readonly spellcheck="false"></textarea>
+    <div class="btnrow">
+      <button type="button" id="copy-morse" data-i18n="copyBtn" disabled>Copy</button>
+      <button type="button" id="clear-morse" data-i18n="clearBtn" class="ghost">Clear</button>
+    </div>
+    <p class="hint" id="hint-morse" data-i18n="emptyHint"></p>
+    <p class="micro" data-i18n="morseHint"></p>
+    <p class="note" id="note-morse" hidden></p>
+    <p class="err" id="err-morse" hidden></p>
+  </section>
+
+  <section id="panel-stats" class="panel" role="tabpanel" hidden>
+    <label for="in-stats" data-i18n="inputLabel">Input</label>
+    <textarea id="in-stats" rows="6" spellcheck="false"></textarea>
+    <div class="btnrow">
+      <button type="button" id="statsBtn" data-i18n="statsBtn">Analyze</button>
+    </div>
+    <p class="hint" id="hint-stats" data-i18n="statsEmpty"></p>
+    <table class="statstable" id="statsRows" hidden></table>
+    <table class="statstable" id="topWords" hidden></table>
+  </section>
+
+  <section id="panel-find" class="panel" role="tabpanel" hidden>
+    <label for="in-find" data-i18n="inputLabel">Input</label>
+    <textarea id="in-find" rows="6" spellcheck="false"></textarea>
+    <div class="findgrid">
+      <div>
+        <label for="findText" data-i18n="findLabel">Find</label>
+        <input type="text" id="findText" autocomplete="off">
+      </div>
+      <div>
+        <label for="replText" data-i18n="replLabel">Replace with</label>
+        <input type="text" id="replText" autocomplete="off">
+      </div>
+    </div>
+    <div class="checks">
+      <label><input type="checkbox" id="caseSens"> <span data-i18n="caseSens">Case sensitive</span></label>
+      <label><input type="checkbox" id="regexMode"> <span data-i18n="regexMode">Regex</span></label>
+    </div>
+    <div class="btnrow">
+      <button type="button" id="findBtn" data-i18n="findBtn">Count</button>
+      <button type="button" id="replaceBtn" data-i18n="replaceBtn">Replace all</button>
+    </div>
+    <p class="countline" id="findCount" hidden></p>
+    <h3 data-i18n="cleanTitle">Cleanup</h3>
+    <div class="btnrow">
+      <button type="button" id="cleanTrim" data-i18n="cleanTrim" class="ghost">Trim lines</button>
+      <button type="button" id="cleanBlank" data-i18n="cleanBlank" class="ghost">Remove blank lines</button>
+      <button type="button" id="cleanDedupe" data-i18n="cleanDedupe" class="ghost">Dedupe lines</button>
+      <button type="button" id="cleanSpaces" data-i18n="cleanSpaces" class="ghost">Collapse spaces</button>
+    </div>
+    <div class="btnrow">
+      <button type="button" id="copy-find" data-i18n="copyBtn">Copy</button>
+      <button type="button" id="clear-find" data-i18n="clearBtn" class="ghost">Clear</button>
+    </div>
+    <p class="note" id="note-find" hidden></p>
+    <p class="err" id="err-find" hidden></p>
+  </section>
+
+</main>
+
+<footer class="wrap foot">
+  <p data-i18n="disclaimer"></p>
+  <p class="micro" data-i18n="footerOffline"></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
